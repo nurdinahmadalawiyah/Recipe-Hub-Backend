@@ -48,6 +48,49 @@ class CategoryController extends Controller
         if (is_null($category)) {
             return response()->json(['error' => 'Category not found.'], 404);
         }
-        return response()->json([$category, 'Category fetched successfully.', new CategoryResource($category)]);
+        return response()->json(['Category fetched successfully.', new CategoryResource($category)]);
+    }
+
+    public function update(Request $request, Category $category)
+    {
+        $validator = Validator::make($request->all(), [
+            'id_category' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors());
+        }
+
+        if($request->hasFile('image')) {
+
+            $file = $request->file('image');
+            $destinationPath = "public\images";
+            $filename = 'category_' . date("Ymd_his") . '.' . $file->extension();
+            Storage::putFileAs($destinationPath, $file, $filename);
+
+            Storage::delete('public/images/' . $category->image);
+
+            $category->update([
+                'id_category' => $request->id_category,
+                'title' => $request->title,
+                'image' => $filename,
+            ]);
+        } else {
+            $category->update([
+                'id_category' => $request->id_category,
+                'title' => $request->title,
+            ]);
+        }
+
+        return response()->json(['Category updated successfully.', new CategoryResource($category)]);
+    }
+
+    public function destroy(Category $category)
+    {
+        $category->delete();
+        Storage::delete('public/images/' . $category->image);
+        
+        return response()->json(['Category deleted successfully.']);
     }
 }
