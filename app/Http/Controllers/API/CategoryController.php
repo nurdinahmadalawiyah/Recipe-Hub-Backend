@@ -14,7 +14,8 @@ class CategoryController extends Controller
     public function index()
     {
         $data = Category::latest()->get();
-        return response()->json([CategoryResource::collection($data), 'Categories fetched']);
+        // return response()->json([CategoryResource::collection($data), 'Categories fetched']);
+        return CategoryResource::collection($data);
     }
 
     public function store(Request $request)

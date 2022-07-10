@@ -32,3 +32,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 
 Route::resource('category', App\Http\Controllers\API\CategoryController::class);
+Route::resource('food', App\Http\Controllers\API\FoodController::class);
