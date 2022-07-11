@@ -19,6 +19,7 @@ class FoodResource extends JsonResource
             'title' => $this->title,
             'category' => $this->category,
             'ingredients' => $this->ingredients,
+            'instructions' => $this->instructions,
             'duration' => $this->duration,
             'image' => asset('storage/images/' . $this->image),
             'created_at' => $this->created_at,

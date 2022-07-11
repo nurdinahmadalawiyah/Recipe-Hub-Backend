@@ -18,6 +18,7 @@ class CreateFoodTable extends Migration
             $table->string("title");
             $table->string("category");
             $table->text("ingredients");
+            $table->text("instructions");
             $table->integer("duration");
             $table->string('image');
             $table->timestamps();

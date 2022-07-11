@@ -24,6 +24,7 @@ class FoodController extends Controller
             'title' => 'required|string|max:255',
             'category' => 'required|string|max:255',
             'ingredients' => 'required|string|max:255',
+            'instructions' => 'required|string',
             'duration' => 'required',
             'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -39,6 +40,7 @@ class FoodController extends Controller
             'title' => $request->title,
             'category' => $request->category,
             'ingredients' => $request->ingredients,
+            'instructions' => $request->instructions,
             'duration' => $request->duration,
             'image' => $filename,
         ]);
@@ -62,6 +64,7 @@ class FoodController extends Controller
             'title' => 'required|string|max:255',
             'category' => 'required|string|max:255',
             'ingredients' => 'required|string|max:255',
+            'instructions' => 'required|string',
             'duration' => 'required',
         ]);
 
@@ -83,6 +86,7 @@ class FoodController extends Controller
                 'title' => $request->title,
                 'category' => $request->category,
                 'ingredients' => $request->ingredients,
+                'instructions' => $request->instructions,
                 'duration' => $request->duration,
                 'image' => $filename,
             ]);
@@ -91,6 +95,7 @@ class FoodController extends Controller
                 'title' => $request->title,
                 'category' => $request->category,
                 'ingredients' => $request->ingredients,
+                'instructions' => $request->instructions,
                 'duration' => $request->duration,
             ]);
         }
