@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProfileResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +45,17 @@ class AuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return response()->json(['message' => 'Hi ' . $user->name . ', welcome to home', 'access_token' => $token, 'token_type' => 'Bearer',]);
+        return response()->json(['message' => 'Hi ' . $user->name . ', welcome to home', 'access_token' => $token, 'token_type' => 'Bearer', 'id' => $user->id]);
+    }
+
+    public function show($id)
+    {
+        $user = User::find($id);
+        if (is_null($user)) {
+            return response()->json(['error' => 'User not found.'], 404);
+        }
+        return response()->json(new ProfileResource($user));
+        // return new ProfileResource($user);
     }
 
     public function logout()

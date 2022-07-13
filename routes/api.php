@@ -23,13 +23,14 @@ Route::post('/login', [App\Http\Controllers\API\AuthController::class, 'login'])
 
 //Protecting Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/profile', function(Request $request) {
-        return auth()->user();
-    });
+    // Route::get('/profile', function(Request $request) {
+    //     return auth()->user();
+    // });
 
     // API route for logout user
     Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout']);
 });
 
+Route::resource('profile', App\Http\Controllers\API\AuthController::class);
 Route::resource('category', App\Http\Controllers\API\CategoryController::class);
 Route::resource('food', App\Http\Controllers\API\FoodController::class);
