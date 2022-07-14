@@ -17,6 +17,7 @@ class CreateFoodTable extends Migration
             $table->id();
             $table->string("title");
             $table->string("category");
+            $table->string("creator");
             $table->text("ingredients");
             $table->text("instructions");
             $table->integer("duration");
