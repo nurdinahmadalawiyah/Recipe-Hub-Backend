@@ -23,6 +23,7 @@ class FoodResource extends JsonResource
             'instructions' => $this->instructions,
             'duration' => $this->duration,
             'image' => asset('storage/images/' . $this->image),
+            'popular' => $this->popular,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

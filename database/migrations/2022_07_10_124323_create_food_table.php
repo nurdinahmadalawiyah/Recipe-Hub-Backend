@@ -22,6 +22,7 @@ class CreateFoodTable extends Migration
             $table->text("instructions");
             $table->integer("duration");
             $table->string('image');
+            $table->string('popular')->nullable();
             $table->timestamps();
         });
     }
