@@ -89,7 +89,7 @@ class FoodTableSeeder extends Seeder
                 'ingredients' => 'Roti, Sosis, Bawang Putih, Saus',
                 'instructions' => 'Mix tepung, gula, susu, ragi hingga rata, tambahkan air, mix hingga halus, tambahkan mentega dan garam, mix hingga elastis, bulatkan, diamkan 30 menit. Bagi 3 bagian, bulatkan, diamkan kembali 10 menit. Bentuk pizza dengan sisi luar lebih tebal, tusuk-tusuk dengan garpu, diam hingga kembang. Oven setengah matang, keluarkan. Oles saus pizza, tabur sosis, keju, dan bahan lainnya. Oven kembali hingga matang, selamat menikmati.',
                 'duration' => 5,
-                'image' => 'food_fastfood_2.webp',
+                'image' => 'food_fastfood_2.jpg',
                 'popular' => 'false',
             ],
             [

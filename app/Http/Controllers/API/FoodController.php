@@ -26,6 +26,8 @@ class FoodController extends Controller
             'ingredients' => 'required|string|max:255',
             'instructions' => 'required|string',
             'duration' => 'required',
+            'popular' => 'required',
+            'creator' => 'required',
             'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -42,7 +44,9 @@ class FoodController extends Controller
             'ingredients' => $request->ingredients,
             'instructions' => $request->instructions,
             'duration' => $request->duration,
-            'image' => $filename,
+            'creator' => $request->creator,
+            'popular' => $request->popular,
+            // 'image' => $filename,
         ]);
         Storage::putFileAs($destinationPath, $file, $filename);
 
@@ -65,7 +69,10 @@ class FoodController extends Controller
             'category' => 'required|string|max:255',
             'ingredients' => 'required|string|max:255',
             'instructions' => 'required|string',
+            'creator' => 'required',
             'duration' => 'required',
+            'popular' => 'required',
+            'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -87,8 +94,10 @@ class FoodController extends Controller
                 'category' => $request->category,
                 'ingredients' => $request->ingredients,
                 'instructions' => $request->instructions,
+                'creator' => $request->creator,
                 'duration' => $request->duration,
                 'image' => $filename,
+                'popular' => $request->popular,
             ]);
         } else {
             $food->update([
@@ -96,7 +105,9 @@ class FoodController extends Controller
                 'category' => $request->category,
                 'ingredients' => $request->ingredients,
                 'instructions' => $request->instructions,
+                'creator' => $request->creator,
                 'duration' => $request->duration,
+                'popular' => $request->popular,
             ]);
         }
 
